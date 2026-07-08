@@ -1,0 +1,3053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Green Mist Studio | Premium Mobile Steam Car Wash</title>
+  <meta name="description" content="Premium mobile steam car wash and valet service for homes, workplaces, flats and suitable private parking areas." />
+
+  <style>
+    :root {
+      --green: #06361f;
+      --green-2: #0d4f2b;
+      --green-3: #176a3a;
+      --deep: #07110d;
+      --cream: #f8f4ec;
+      --cream-2: #eee8dc;
+      --paper: #fffaf2;
+      --text: #101412;
+      --muted: #626b63;
+      --gold: #d7a846;
+      --gold-2: #f0bc54;
+      --line: rgba(10, 18, 14, 0.12);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.14);
+      --soft-shadow: 0 18px 45px rgba(6, 54, 31, 0.08);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, #0d2317 0%, #030605 42%, #010302 100%);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--green));
+      z-index: 9999;
+      box-shadow: 0 0 18px rgba(215, 168, 70, 0.45);
+      transition: width 0.08s linear;
+    }
+
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background:
+        radial-gradient(circle at center, rgba(215, 168, 70, 0.13), transparent 28%),
+        linear-gradient(135deg, #06170f, #020604);
+      display: grid;
+      place-items: center;
+      transition: opacity 0.65s ease, visibility 0.65s ease;
+    }
+
+    .page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-inner {
+      text-align: center;
+      color: #fff;
+    }
+
+    .loader-logo {
+      width: 78px;
+      height: 78px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      font-family: var(--serif);
+      font-size: 32px;
+      letter-spacing: -0.12em;
+      color: var(--gold-2);
+      position: relative;
+      animation: loaderPulse 1.8s ease-in-out infinite;
+    }
+
+    .loader-logo::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(215, 168, 70, 0.25);
+      animation: loaderRing 1.8s ease-in-out infinite;
+    }
+
+    .loader-inner p {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.68);
+      font-weight: 900;
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(215, 168, 70, 0); }
+      50% { transform: scale(1.045); box-shadow: 0 0 34px rgba(215, 168, 70, 0.28); }
+    }
+
+    @keyframes loaderRing {
+      0% { transform: scale(0.92); opacity: 0.4; }
+      70% { transform: scale(1.2); opacity: 0; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+
+    .site-shell {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      background: var(--cream);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 40px 120px rgba(0, 0, 0, 0.42);
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 72px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-pad {
+      padding: 116px 0;
+    }
+
+    .section-soft {
+      background:
+        radial-gradient(circle at 10% 16%, rgba(215, 168, 70, 0.08), transparent 22%),
+        linear-gradient(180deg, #fbf8f1 0%, #f4eee4 100%);
+    }
+
+    .section-white {
+      background: #fffaf2;
+    }
+
+    .section-green {
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(215, 168, 70, 0.17), transparent 25%),
+        linear-gradient(135deg, #06170f 0%, #0a2b1a 56%, #04110a 100%);
+    }
+
+    .section-glow {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(215, 168, 70, 0.1), transparent 68%);
+      filter: blur(12px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .section-glow.left { left: -160px; top: 80px; }
+    .section-glow.right { right: -150px; bottom: 80px; }
+
+    /* Single standard header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(248, 244, 236, 0.9);
+      border-bottom: 1px solid rgba(10, 18, 14, 0.08);
+      backdrop-filter: blur(18px);
+      transition: box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(248, 244, 236, 0.96);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-inner {
+      height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-size: 13px;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+
+    .mark {
+      width: 50px;
+      height: 50px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.12em;
+      position: relative;
+      color: var(--green);
+    }
+
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(215, 168, 70, 0.65);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+      color: #182019;
+      opacity: 0.9;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green-2);
+    }
+
+    .nav-links a:not(.btn)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: 999px;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--green);
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 7px;
+      min-height: 47px;
+      padding: 0 27px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(180deg, #1f7a3f, #0e562d);
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 12px 24px rgba(6, 54, 31, 0.24);
+      transition: 0.25s ease;
+      letter-spacing: -0.01em;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: -120% auto auto -40%;
+      width: 34%;
+      height: 340%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+      transform: rotate(28deg) translateX(-220%);
+      transition: transform 0.75s ease;
+      z-index: -1;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(6, 54, 31, 0.32);
+    }
+
+    .btn:hover::after {
+      transform: rotate(28deg) translateX(560%);
+    }
+
+    .btn.outline {
+      background: rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(240, 188, 84, 0.9);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .btn.light-outline {
+      background: transparent;
+      color: var(--green);
+      border: 1px solid rgba(6, 54, 31, 0.24);
+      box-shadow: none;
+    }
+
+    .btn.full {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 840px;
+      color: #fff;
+      display: grid;
+      align-items: stretch;
+      background: #08120e;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background-position: center right;
+      background-size: cover;
+      animation: heroFade 18s infinite;
+      transform: scale(1.04);
+    }
+
+    .hero-slide:nth-child(1) { animation-delay: 0s; }
+    .hero-slide:nth-child(2) { animation-delay: 6s; }
+    .hero-slide:nth-child(3) { animation-delay: 12s; }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(5, 19, 12, 0.98) 0%, rgba(5, 19, 12, 0.92) 34%, rgba(5, 19, 12, 0.45) 63%, rgba(5, 19, 12, 0.2) 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.24));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 180px;
+      z-index: 1;
+      background: linear-gradient(0deg, rgba(5, 19, 12, 1), transparent);
+      pointer-events: none;
+    }
+
+    @keyframes heroFade {
+      0% { opacity: 0; transform: scale(1.04); }
+      8% { opacity: 1; }
+      32% { opacity: 1; transform: scale(1.095); }
+      42% { opacity: 0; }
+      100% { opacity: 0; transform: scale(1.04); }
+    }
+
+    .hero-content {
+      min-height: 840px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.72fr);
+      align-items: center;
+      gap: 84px;
+      padding: 94px 0 104px;
+    }
+
+    .micro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(215, 168, 70, 0.32);
+      background: rgba(255, 255, 255, 0.08);
+      color: #f6e6bd;
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .micro-badge span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #5aa35b;
+      box-shadow: 0 0 18px rgba(90, 163, 91, 0.8);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      font-weight: 950;
+      max-width: 680px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #5aa35b;
+      background: linear-gradient(90deg, #5aa35b, #8bcc7f, #5aa35b);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: premiumTextSheen 7s ease-in-out infinite;
+    }
+
+    @keyframes premiumTextSheen {
+      0%, 72%, 100% { background-position: 0% center; }
+      84% { background-position: 100% center; }
+    }
+
+    .hero-lead {
+      font-size: 19px;
+      font-weight: 900;
+      margin-bottom: 15px;
+      max-width: 560px;
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 16px;
+      font-weight: 650;
+      line-height: 1.75;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .hero-proof {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+    }
+
+    .proof-pill strong {
+      color: var(--gold-2);
+    }
+
+    .hero-card {
+      justify-self: end;
+      width: min(430px, 100%);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.36);
+    }
+
+    .hero-card-image {
+      height: 270px;
+      border-radius: 20px;
+      background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16)),
+        url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=900&q=86") center/cover;
+      margin-bottom: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card-image::after,
+    .service-image::after,
+    .flat-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 18%, rgba(255, 255, 255, 0.24) 44%, transparent 62%);
+      transform: translateX(-120%);
+      transition: transform 0.9s ease;
+    }
+
+    .hero-card:hover .hero-card-image::after,
+    .service-card:hover .service-image::after,
+    .flat-image:hover::after {
+      transform: translateX(120%);
+    }
+
+    .hero-card h3 {
+      font-family: var(--serif);
+      color: #f6e6bd;
+      font-size: 26px;
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .quick-benefits {
+      position: relative;
+      z-index: 3;
+      background: linear-gradient(180deg, #092617, #05170e);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .benefits-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .benefit-mini {
+      min-height: 174px;
+      padding: 28px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      border-right: 1px solid rgba(255, 255, 255, 0.11);
+      color: #fff;
+    }
+
+    .benefit-mini:last-child {
+      border-right: 0;
+    }
+
+    .benefit-mini svg {
+      width: 38px;
+      height: 38px;
+      color: #d9e5d8;
+      animation: iconBreath 4.8s ease-in-out infinite;
+    }
+
+    .benefit-mini:nth-child(2) svg { animation-delay: 0.35s; }
+    .benefit-mini:nth-child(3) svg { animation-delay: 0.7s; }
+    .benefit-mini:nth-child(4) svg { animation-delay: 1.05s; }
+    .benefit-mini:nth-child(5) svg { animation-delay: 1.4s; }
+
+    .benefit-mini h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      line-height: 1.28;
+      font-weight: 950;
+    }
+
+    .benefit-mini p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      line-height: 1.45;
+      max-width: 150px;
+    }
+
+    @keyframes iconBreath {
+      0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0 rgba(215, 168, 70, 0)); }
+      50% { transform: translateY(-4px); filter: drop-shadow(0 8px 18px rgba(215, 168, 70, 0.18)); }
+    }
+
+    /* Titles */
+    .section-title {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 46px;
+    }
+
+    .section-title.left {
+      text-align: left;
+      margin-left: 0;
+    }
+
+    .section-title .kicker {
+      color: var(--green-2);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      font-weight: 650;
+    }
+
+    /* Flat block */
+    .flat-grid {
+      display: grid;
+      grid-template-columns: 380px minmax(0, 1fr) 280px;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .flat-image {
+      min-height: 260px;
+      border-radius: 16px;
+      background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+        url("https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=750&q=84") center/cover;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .flat-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .flat-copy h2 {
+      font-size: 25px;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .flat-copy p {
+      color: #333b34;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 17px;
+      max-width: 470px;
+    }
+
+    .checks {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      font-size: 13px;
+      color: #1f2d23;
+    }
+
+    .checks li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .checks li::before {
+      content: "✓";
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--green-2);
+      color: var(--green-2);
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 18px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .save-box {
+      border-radius: 16px;
+      padding: 26px 22px;
+      background:
+        radial-gradient(circle at 85% 12%, rgba(215, 168, 70, 0.2), transparent 28%),
+        linear-gradient(160deg, #0b3d24, #04180e);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    .save-box h3 {
+      text-transform: uppercase;
+      font-size: 21px;
+      line-height: 1.22;
+      margin-bottom: 13px;
+    }
+
+    .save-box p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    /* Services */
+    .pricing-tabs {
+      width: 560px;
+      max-width: 100%;
+      margin: -10px auto 28px;
+      background: #111;
+      border-radius: 8px;
+      padding: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .pricing-tabs span {
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      text-align: center;
+      padding: 11px;
+      border-radius: 6px;
+    }
+
+    .pricing-tabs span.active {
+      background: linear-gradient(180deg, #4a9c52, #1a743a);
+    }
+
+    .pricing-tabs::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.64);
+      border: 1px solid rgba(0, 0, 0, 0.09);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(6, 54, 31, 0.13);
+    }
+
+    .service-card-head {
+      padding: 27px 26px 12px;
+    }
+
+    .service-card h3 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 19px;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      padding: 14px 18px;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      text-align: left;
+      font-size: 15px;
+    }
+
+    th {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #0e1511;
+      background: rgba(0, 0, 0, 0.018);
+      font-weight: 950;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    td:nth-child(2),
+    td:nth-child(3),
+    td:nth-child(4) {
+      font-weight: 900;
+    }
+
+    .service-image {
+      height: 124px;
+      margin: 18px;
+      border-radius: 12px;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)),
+        var(--img) center/cover;
+      filter: grayscale(0.72) contrast(1.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .club-cta {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #fffaf2, #eee6d7);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 42px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .club-cta-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .crown {
+      font-size: 48px;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .club-cta h3 {
+      font-size: 21px;
+      text-transform: uppercase;
+      line-height: 1.22;
+      max-width: 500px;
+    }
+
+    .club-cta small {
+      display: block;
+      text-align: center;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #282f28;
+    }
+
+    /* Membership */
+    .membership-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+      gap: 52px;
+      align-items: center;
+    }
+
+    .membership-copy h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 54px);
+      line-height: 1.04;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .membership-copy h3 {
+      font-size: 18px;
+      margin-bottom: 22px;
+    }
+
+    .membership-copy p {
+      color: #303831;
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 410px;
+      margin-bottom: 20px;
+    }
+
+    .member-price {
+      font-family: var(--serif);
+      font-size: 56px;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .member-price span {
+      font-family: var(--sans);
+      font-size: 15px;
+      color: #252b27;
+      font-weight: 600;
+    }
+
+    .club-card-wrap {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+    }
+
+    .club-card-visual {
+      height: 280px;
+      width: min(420px, 100%);
+      border-radius: 22px;
+      transform: perspective(900px) rotateY(-13deg) rotateX(6deg);
+      background:
+        radial-gradient(circle at 58% 28%, rgba(215, 168, 70, 0.2), transparent 28%),
+        linear-gradient(140deg, #0c351f, #07170e);
+      box-shadow: 28px 28px 45px rgba(0, 0, 0, 0.23);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      position: relative;
+      animation: floatingCard 5.5s ease-in-out infinite;
+    }
+
+    .club-card-visual::after {
+      content: "";
+      position: absolute;
+      right: -58px;
+      bottom: -18px;
+      width: 170px;
+      height: 34px;
+      transform: skewX(-28deg);
+      background: #0b2517;
+      border-radius: 0 0 12px 12px;
+      filter: brightness(0.9);
+      z-index: -1;
+    }
+
+    .club-card-visual .card-logo {
+      width: 86px;
+      height: 86px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      font-family: var(--serif);
+      font-size: 38px;
+      letter-spacing: -0.12em;
+    }
+
+    .club-card-visual strong {
+      color: #fff;
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 25px;
+      line-height: 1.16;
+    }
+
+    @keyframes floatingCard {
+      0%, 100% { transform: perspective(900px) rotateY(-13deg) rotateX(6deg) translateY(0); }
+      50% { transform: perspective(900px) rotateY(-13deg) rotateX(6deg) translateY(-9px); }
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 54px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .benefit-card {
+      min-height: 132px;
+      padding: 28px 30px;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 16px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .benefit-card:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .benefit-card:nth-child(n+4) {
+      border-bottom: 0;
+    }
+
+    .benefit-card h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .benefit-card p {
+      font-size: 12px;
+      color: #2c332f;
+      line-height: 1.55;
+    }
+
+    .benefit-card svg {
+      width: 32px;
+      height: 32px;
+      color: #12241a;
+    }
+
+    /* How */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+      padding: 0 18px;
+      border-right: 1px solid rgba(0, 0, 0, 0.09);
+    }
+
+    .step:last-child {
+      border-right: 0;
+    }
+
+    .step:not(:last-child)::after {
+      content: "---->";
+      position: absolute;
+      top: 43px;
+      right: -22px;
+      color: #9a9d98;
+      font-size: 13px;
+      letter-spacing: 2px;
+      z-index: 3;
+    }
+
+    .step-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: #06361f;
+      border: 4px solid #092113;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      color: #fff;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.16);
+      animation: iconBreath 4.8s ease-in-out infinite;
+    }
+
+    .step:nth-child(2) .step-icon { animation-delay: 0.35s; }
+    .step:nth-child(3) .step-icon { animation-delay: 0.7s; }
+    .step:nth-child(4) .step-icon { animation-delay: 1.05s; }
+    .step:nth-child(5) .step-icon { animation-delay: 1.4s; }
+
+    .step-icon svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .num {
+      font-size: 26px;
+      font-weight: 950;
+      margin-bottom: 14px;
+    }
+
+    .step h3 {
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      font-size: 12px;
+      color: #2f3630;
+      line-height: 1.6;
+    }
+
+    .care-banner {
+      margin-top: 74px;
+      min-height: 300px;
+      display: grid;
+      align-items: center;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(248, 244, 236, 1) 0%, rgba(248, 244, 236, 0.92) 42%, rgba(248, 244, 236, 0.2) 70%, rgba(248, 244, 236, 0) 100%),
+        url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1400&q=86") center right/cover;
+      border: 1px solid var(--line);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .care-banner-content {
+      padding: 54px;
+    }
+
+    .care-banner h2 {
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: -0.035em;
+      margin-bottom: 18px;
+      max-width: 440px;
+    }
+
+    .care-banner p {
+      color: #303830;
+      max-width: 470px;
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    /* Reviews */
+    .review-summary {
+      border: 1px solid rgba(6, 54, 31, 0.14);
+      border-radius: 18px;
+      padding: 18px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #fffaf2, #eee6d7);
+      margin-bottom: 18px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .rating-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .rating-number {
+      font-size: 40px;
+      color: var(--green);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 30px;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 14px rgba(215, 168, 70, 0.22);
+    }
+
+    .review-summary p {
+      font-size: 17px;
+      color: #27322b;
+      font-weight: 800;
+    }
+
+    .google {
+      font-size: 29px;
+      font-weight: 700;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 999px;
+      padding: 5px 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .google span:nth-child(1) { color: #4285f4; }
+    .google span:nth-child(2) { color: #db4437; }
+    .google span:nth-child(3) { color: #f4b400; }
+    .google span:nth-child(4) { color: #4285f4; }
+    .google span:nth-child(5) { color: #0f9d58; }
+    .google span:nth-child(6) { color: #db4437; }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .review-card {
+      border: 1px solid rgba(6, 54, 31, 0.12);
+      border-radius: 18px;
+      padding: 25px 24px;
+      background: rgba(255, 255, 255, 0.7);
+      min-height: 190px;
+      box-shadow: var(--soft-shadow);
+      transition: 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      opacity: 0.9;
+    }
+
+    .review-card:hover,
+    .review-card.featured {
+      transform: translateY(-4px);
+      border-color: rgba(6, 54, 31, 0.24);
+      box-shadow: 0 24px 55px rgba(6, 54, 31, 0.12);
+    }
+
+    .review-card .mini-stars {
+      color: var(--gold);
+      font-size: 21px;
+      letter-spacing: 1px;
+      margin-bottom: 13px;
+    }
+
+    .review-card p {
+      color: #29322c;
+      font-size: 15px;
+      line-height: 1.68;
+      margin-bottom: 14px;
+    }
+
+    .review-card strong {
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .review-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .review-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      border: 0;
+      background: rgba(6, 54, 31, 0.25);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .review-dot.active {
+      width: 34px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      box-shadow: 0 6px 18px rgba(6, 54, 31, 0.18);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.84fr 1.16fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    .contact-card {
+      border-radius: 22px;
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-card h2 {
+      font-family: var(--serif);
+      font-size: 34px;
+      text-transform: uppercase;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 16px;
+    }
+
+    .contact-card > p {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+      line-height: 1.75;
+      margin-bottom: 30px;
+      max-width: 360px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .contact-line {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .contact-line svg {
+      width: 27px;
+      height: 27px;
+      color: var(--gold-2);
+    }
+
+    .contact-line h4 {
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    .contact-line p,
+    .contact-line a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .form-card {
+      border-radius: 22px;
+      padding: 34px;
+      background: #fffaf2;
+      border: 1px solid rgba(215, 168, 70, 0.22);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .form-card input,
+    .form-card textarea,
+    .form-card select {
+      width: 100%;
+      border: 1px solid rgba(10, 18, 14, 0.14);
+      background: rgba(255, 255, 255, 0.75);
+      min-height: 48px;
+      padding: 0 16px;
+      border-radius: 10px;
+      outline: 0;
+      font-size: 13px;
+      transition: 0.2s ease;
+      color: var(--text);
+    }
+
+    .form-card textarea {
+      height: 136px;
+      padding-top: 15px;
+      resize: vertical;
+    }
+
+    .form-card input:focus,
+    .form-card textarea:focus,
+    .form-card select:focus {
+      border-color: #0e562d;
+      box-shadow: 0 0 0 4px rgba(14, 86, 45, 0.1);
+      background: #fff;
+    }
+
+    .form-card .form-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .area-map {
+      margin-top: 52px;
+      min-height: 265px;
+      background:
+        linear-gradient(90deg, rgba(248, 244, 236, 1) 0%, rgba(248, 244, 236, 0.9) 37%, rgba(248, 244, 236, 0.38) 60%),
+        radial-gradient(circle at 75% 45%, rgba(12, 58, 34, 0.16), transparent 18%),
+        repeating-linear-gradient(38deg, rgba(28, 54, 38, 0.08) 0 1px, transparent 1px 34px),
+        #e6e2d8;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: grid;
+      align-items: center;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 52px;
+      align-items: center;
+      color: var(--text);
+      padding: 44px;
+    }
+
+    .area-grid h2 {
+      font-family: var(--serif);
+      font-size: 28px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .areas {
+      list-style: none;
+      columns: 2;
+      font-size: 13px;
+      font-weight: 800;
+      color: #273028;
+      line-height: 2.05;
+    }
+
+    .areas li::before {
+      content: "✓";
+      color: var(--green-2);
+      font-weight: 950;
+      margin-right: 12px;
+    }
+
+    .pin {
+      justify-self: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 50% 50% 50% 0;
+      background: #0e562d;
+      transform: rotate(-45deg);
+      box-shadow: 0 15px 30px rgba(6, 54, 31, 0.28);
+      position: relative;
+    }
+
+    .pin::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f4eee3;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Footer */
+    .premium-footer {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(215, 168, 70, 0.18), transparent 24%),
+        linear-gradient(135deg, #06170f 0%, #0a2b1a 56%, #04110a 100%);
+      color: #fff;
+      padding: 58px 0 24px;
+      border-top: 1px solid rgba(215, 168, 70, 0.22);
+    }
+
+    .premium-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.18fr 0.78fr 0.78fr 0.95fr;
+      gap: 34px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-brand .brand {
+      color: var(--gold-2);
+      margin-bottom: 18px;
+    }
+
+    .footer-brand .brand span:last-child {
+      color: #fff;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      line-height: 1.75;
+      max-width: 300px;
+      margin-bottom: 22px;
+    }
+
+    .footer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 14px;
+      border: 1px solid rgba(215, 168, 70, 0.34);
+      border-radius: 999px;
+      color: #f6e6bd;
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      line-height: 1.9;
+      margin-bottom: 7px;
+      transition: 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold-2);
+      transform: translateX(2px);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 11px;
+      margin-top: 16px;
+    }
+
+    .footer-socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.045);
+      font-weight: 900;
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 12px;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.7);
+      margin-left: 18px;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--gold-2);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #0e562d;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      z-index: 100;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.28);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: 0.25s ease;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .stroke {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .premium-tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      will-change: transform;
+    }
+
+
+    /* FAQ Page */
+    .faq-section {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(215, 168, 70, 0.10), transparent 24%),
+        radial-gradient(circle at 86% 78%, rgba(6, 54, 31, 0.08), transparent 22%),
+        linear-gradient(180deg, #fffaf2 0%, #f4eee4 100%);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .faq-intro {
+      position: sticky;
+      top: 128px;
+    }
+
+    .faq-intro-card {
+      margin-top: 28px;
+      border-radius: 22px;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 86% 16%, rgba(215, 168, 70, 0.18), transparent 28%),
+        linear-gradient(160deg, #0b3d24, #04180e);
+      color: #fff;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .faq-intro-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.12), transparent 62%);
+      transform: translateX(-120%);
+      animation: faqCardSheen 5.5s ease-in-out infinite;
+    }
+
+    @keyframes faqCardSheen {
+      0%, 72%, 100% { transform: translateX(-120%); }
+      86% { transform: translateX(120%); }
+    }
+
+    .faq-intro-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .faq-intro-card h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: -0.035em;
+      margin-bottom: 14px;
+      color: #f6e6bd;
+    }
+
+    .faq-intro-card p {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .faq-mini-slider {
+      min-height: 72px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .faq-mini-slide {
+      position: absolute;
+      inset: 0;
+      padding: 15px 16px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .faq-mini-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .faq-mini-slide strong {
+      display: block;
+      color: var(--gold-2);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .faq-mini-slide span {
+      display: block;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 750;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(6, 54, 31, 0.13);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.68);
+      overflow: hidden;
+      box-shadow: 0 14px 35px rgba(6, 54, 31, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(6, 54, 31, 0.22);
+      box-shadow: 0 22px 50px rgba(6, 54, 31, 0.10);
+    }
+
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 21px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text);
+      font-weight: 950;
+      font-size: 15px;
+    }
+
+    .faq-question .faq-plus {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(6, 54, 31, 0.08);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      flex: 0 0 34px;
+      font-size: 20px;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.42s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 22px 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .faq-item.open {
+      border-color: rgba(215, 168, 70, 0.32);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .faq-item.open .faq-plus {
+      transform: rotate(45deg);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .faq-bottom-cta {
+      margin-top: 22px;
+      padding: 24px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fffaf2, #eee6d7);
+      border: 1px solid rgba(6, 54, 31, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .faq-bottom-cta h3 {
+      text-transform: uppercase;
+      font-size: 18px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .faq-bottom-cta p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Extra premium motion, kept subtle */
+    .section-title h2 {
+      background: linear-gradient(90deg, currentColor, currentColor, rgba(215, 168, 70, 0.72), currentColor);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: titleSheen 8s ease-in-out infinite;
+    }
+
+    @keyframes titleSheen {
+      0%, 74%, 100% { background-position: 0% center; }
+      88% { background-position: 100% center; }
+    }
+
+    .premium-ambient {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(215, 168, 70, 0.16);
+      pointer-events: none;
+      z-index: 1;
+      animation: ambientFloat 12s ease-in-out infinite;
+    }
+
+    .premium-ambient.one {
+      left: 5%;
+      top: 10%;
+    }
+
+    .premium-ambient.two {
+      right: 6%;
+      bottom: 12%;
+      animation-delay: 2.2s;
+    }
+
+    @keyframes ambientFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.38; }
+      50% { transform: translate3d(0, -18px, 0) scale(1.08); opacity: 0.72; }
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .container {
+        width: min(1080px, calc(100% - 48px));
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .hero-content,
+      .flat-grid,
+      .membership-grid,
+      .contact-grid,
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-intro {
+        position: relative;
+        top: auto;
+      }
+
+      .hero-card {
+        justify-self: start;
+      }
+
+      .flat-grid {
+        gap: 24px;
+      }
+
+      .flat-image,
+      .save-box {
+        min-height: 230px;
+      }
+
+      .benefits-strip,
+      .steps,
+      .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefit-mini:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .step {
+        padding-bottom: 32px;
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+
+      .benefit-card:nth-child(3n) {
+        border-right: 1px solid var(--line);
+      }
+
+      .benefit-card:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .benefit-card:nth-child(n+4) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .benefit-card:last-child,
+      .benefit-card:nth-last-child(2) {
+        border-bottom: 0;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 880px) {
+      .header-inner {
+        height: 76px;
+      }
+
+      .mobile-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: fixed;
+        left: 18px;
+        right: 18px;
+        top: 86px;
+        background: rgba(6, 18, 12, 0.97);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        z-index: 2000;
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        color: #fff;
+        padding: 13px 10px;
+      }
+
+      .nav-links a.active,
+      .nav-links a:hover {
+        color: var(--gold-2);
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        margin-top: 6px;
+      }
+
+      .hero,
+      .hero-content {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 86px 0 70px;
+      }
+
+      .hero-slide {
+        background-position: center;
+      }
+
+      .benefits-strip,
+      .service-grid,
+      .steps,
+      .benefit-grid,
+      .review-grid,
+      .area-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit-mini {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+      }
+
+      .benefit-mini:last-child {
+        border-bottom: 0;
+      }
+
+      .step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .step:last-child {
+        border-bottom: 0;
+      }
+
+      .benefit-card,
+      .benefit-card:nth-child(2n),
+      .benefit-card:nth-child(3n),
+      .benefit-card:nth-child(n+4) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .benefit-card:last-child {
+        border-bottom: 0;
+      }
+
+      .review-summary,
+      .club-cta,
+      .club-cta-left,
+      .faq-bottom-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .review-dots {
+        display: none;
+      }
+
+      .care-banner-content,
+      .area-grid {
+        padding: 32px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 30px, 1080px);
+      }
+
+      .brand {
+        font-size: 10px;
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .section-pad {
+        padding: 74px 0;
+      }
+
+      .section-title h2 {
+        font-size: 31px;
+      }
+
+      th,
+      td {
+        padding: 11px 9px;
+        font-size: 13px;
+      }
+
+      .club-cta {
+        padding: 22px;
+      }
+
+      .areas {
+        columns: 1;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom a {
+        margin-left: 0;
+        margin-right: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-inner">
+      <div class="loader-logo">GM</div>
+      <p>Premium car care loading</p>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <a class="back-top" href="#home" aria-label="Back to top">↑</a>
+
+  <div class="site-shell">
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a href="#home" class="brand" aria-label="Green Mist Studio home">
+          <span class="mark">GM</span>
+          <span>Green Mist<br>Studio</span>
+        </a>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+          <a href="#home" class="active">Home</a>
+          <a href="#services">Services</a>
+          <a href="#membership">Membership</a>
+          <a href="#how">How It Works</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="#areas">Areas</a>
+          <a href="#contact">Contact</a>
+          <a class="btn" href="#contact">Book Now</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="section hero">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1600&q=86')"></div>
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&w=1600&q=86')"></div>
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=86')"></div>
+        </div>
+
+        <div class="container hero-content">
+          <div class="hero-copy reveal">
+            <div class="micro-badge"><span></span> Mobile steam detailing</div>
+            <h1>Your Car.<br>Your Space.<span>Your Time.</span></h1>
+            <p class="hero-lead">Premium car care, wherever life takes you.</p>
+            <p class="hero-sub">
+              At home. At work. On your driveway. Or in a suitable private parking area.
+              We bring the water, power, equipment and premium products.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn" href="#contact">Book Your Service</a>
+              <a class="btn outline" href="#membership">Join Membership</a>
+            </div>
+
+            <div class="hero-proof">
+              <span class="proof-pill"><strong>5.0</strong> Google Rating</span>
+              <span class="proof-pill"><strong>120+</strong> Happy Customers</span>
+              <span class="proof-pill"><strong>£6.99</strong> Club Membership</span>
+            </div>
+          </div>
+
+          <aside class="hero-card reveal" aria-label="Premium steam detailing highlight">
+            <div class="hero-card-image"></div>
+            <h3>Low-water steam car care</h3>
+            <p>Designed for modern city living, apartments, workplaces and private parking spaces.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="quick-benefits" aria-label="Key benefits">
+        <div class="container benefits-strip">
+          <div class="benefit-mini reveal">
+            <svg viewBox="0 0 24 24"><path class="stroke" d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"/><path class="stroke" d="M12 10.5h.01"/></svg>
+            <h4>We come to you</h4>
+            <p>Where your car is parked.</p>
+          </div>
+
+          <div class="benefit-mini reveal">
+            <svg viewBox="0 0 24 24"><path class="stroke" d="M12 3C8 8 6 11.5 6 15a6 6 0 0 0 12 0c0-3.5-2-7-6-12Z"/><path class="stroke" d="M9 16c1.6 1 4.4 1 6 0"/></svg>
+            <h4>Low water<br>less runoff</h4>
+            <p>Better for your car and environment.</p>
+          </div>
+
+          <div class="benefit-mini reveal">
+            <svg viewBox="0 0 24 24"><path class="stroke" d="M4 10v4h4l5 5V5L8 10H4Z"/><path class="stroke" d="M17 9c1 1 1 5 0 6"/></svg>
+            <h4>Quieter by<br>design</h4>
+            <p>Battery-powered equipment.</p>
+          </div>
+
+          <div class="benefit-mini reveal">
+            <svg viewBox="0 0 24 24"><path class="stroke" d="M4 7h16M8 7v13M16 7v13M6 3h12M10 11l4 4M14 11l-4 4"/></svg>
+            <h4>No water or<br>power needed</h4>
+            <p>We bring everything we need.</p>
+          </div>
+
+          <div class="benefit-mini reveal">
+            <svg viewBox="0 0 24 24"><path class="stroke" d="M8 21V8a4 4 0 0 1 8 0v13M5 21h14M10 8h4M10 12h4M10 16h4"/></svg>
+            <h4>Homes, work<br>& flats</h4>
+            <p>Including private parking areas.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft section-pad">
+        <div class="container flat-grid">
+          <div class="flat-image reveal"></div>
+
+          <div class="flat-copy reveal">
+            <h2>Live in a flat? No driveway? No problem.</h2>
+            <p>
+              Our compact, self-contained system is designed for modern living. Perfect for suitable
+              private parking areas of flats and apartment developments.
+            </p>
+            <ul class="checks">
+              <li>No customer water connection</li>
+              <li>No customer electricity supply</li>
+              <li>Compact & professional setup</li>
+              <li>Subject to access & permission</li>
+            </ul>
+          </div>
+
+          <div class="save-box reveal">
+            <div>
+              <h3>Members save from their first wash.</h3>
+              <p>Join Green Mist Club for only £6.99/month and unlock exclusive member benefits.</p>
+            </div>
+            <a class="btn" href="#membership">Join Today</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section section-white section-pad">
+        <div class="section-glow left" aria-hidden="true"></div>
+        <div class="container">
+          <div class="section-title reveal">
+            <div class="kicker">Services & Pricing</div>
+            <h2>Premium care with simple pricing</h2>
+            <p>Members save on every wash. One visit can already cover the monthly membership.</p>
+          </div>
+
+          <div class="pricing-tabs reveal" aria-label="Pricing comparison">
+            <span>Non-Member Prices</span>
+            <span class="active">Member Prices</span>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-card reveal">
+              <div class="service-card-head">
+                <h3>Exterior Quick Refresh</h3>
+                <p>A perfect regular maintenance wash to keep your car looking clean and fresh.</p>
+              </div>
+
+              <table>
+                <thead>
+                  <tr><th>Size</th><th>Non-Member</th><th>Member Price</th><th>You Save</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Small</td><td>£39</td><td>£35</td><td>£4</td></tr>
+                  <tr><td>Medium</td><td>£45</td><td>£40</td><td>£5</td></tr>
+                  <tr><td>Large</td><td>£50</td><td>£45</td><td>£5</td></tr>
+                </tbody>
+              </table>
+
+              <div class="service-image" style="--img:url('https://images.unsplash.com/photo-1617814076668-512ad7ed62b5?auto=format&fit=crop&w=900&q=86')"></div>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-card-head">
+                <h3>Mini Valet</h3>
+                <p>A deeper clean for both exterior and interior freshness.</p>
+              </div>
+
+              <table>
+                <thead>
+                  <tr><th>Size</th><th>Non-Member</th><th>Member Price</th><th>You Save</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Small</td><td>£59</td><td>£49</td><td>£10</td></tr>
+                  <tr><td>Medium</td><td>£65</td><td>£55</td><td>£10</td></tr>
+                  <tr><td>Large</td><td>£69</td><td>£59</td><td>£10</td></tr>
+                </tbody>
+              </table>
+
+              <div class="service-image" style="--img:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=86')"></div>
+            </article>
+          </div>
+
+          <div class="club-cta reveal">
+            <div class="club-cta-left">
+              <div class="crown">♛</div>
+              <h3>One wash can already cover your monthly membership.</h3>
+            </div>
+            <div>
+              <a class="btn" href="#membership">Join Green Mist Club</a>
+              <small>Only £6.99/month</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="membership" class="section section-soft section-pad">
+        <div class="section-glow right" aria-hidden="true"></div>
+        <div class="container">
+          <div class="membership-grid">
+            <div class="membership-copy reveal">
+              <div class="section-title left" style="margin-bottom: 0;">
+                <div class="kicker">Membership</div>
+                <h2>Green Mist Club Membership</h2>
+              </div>
+
+              <h3>Regular care. Better value.</h3>
+              <p>
+                For only £6.99/month, members enjoy exclusive benefits that make car care easier,
+                more convenient and more rewarding.
+              </p>
+
+              <div class="member-price">£6.99 <span>/month</span></div>
+              <p style="margin-bottom: 24px;">Cancel anytime.</p>
+              <a class="btn" href="#contact">Join Green Mist Club</a>
+            </div>
+
+            <div class="club-card-wrap reveal">
+              <div class="club-card-visual">
+                <div>
+                  <div class="card-logo">GM</div>
+                  <strong>Green Mist<br>Club</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="benefit-grid reveal">
+            <div class="benefit-card">
+              <svg viewBox="0 0 24 24"><path class="stroke" d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div><h4>Reduced Prices</h4><p>Save on every wash, every time.</p></div>
+            </div>
+
+            <div class="benefit-card">
+              <svg viewBox="0 0 24 24"><path class="stroke" d="M12 8v5l3 2M21 12a9 9 0 1 1-9-9"/></svg>
+              <div><h4>Priority Booking</h4><p>Book earlier and get the slots you want.</p></div>
+            </div>
+
+            <div class="benefit-card">
+              <svg viewBox="0 0 24 24"><path class="stroke" d="M7 3h10v18H7zM9 7h6M9 11h6M9 15h4"/></svg>
+              <div><h4>Service History</h4><p>View your past services in one place.</p></div>
+            </div>
+
+            <div class="benefit-card">
+              <svg viewBox="0 0 24 24"><path class="stroke" d="M4 7h16v14H4zM8 7l2-4h4l2 4M8 17l3-3 2 2 3-4"/></svg>
+              <div><h4>Before & After Photos</h4><p>See the results of every service.</p></div>
+            </div>
+
+            <div class="benefit-card">
+              <svg viewBox="0 0 24 24"><path class="stroke" d="M4 11v10h16V11M12 21V7M5 7h14v4H5zM12 7H8.5a2.5 2.5 0 1 1 2.5-2.5V7ZM12 7h3.5A2.5 2.5 0 1 0 13 4.5V7Z"/></svg>
+              <div><h4>Exclusive Offers</h4><p>Members get special deals and rewards.</p></div>
+            </div>
+
+            <div class="benefit-card">
+              <svg viewBox="0 0 24 24"><path class="stroke" d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4ZM9 12l2 2 4-4"/></svg>
+              <div><h4>Regular Care</h4><p>Keep your car in top condition all year round.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="section section-white section-pad">
+        <div class="container">
+          <div class="section-title reveal">
+            <div class="kicker">Process</div>
+            <h2>How it works</h2>
+            <p>Simple. Convenient. Hassle-free.</p>
+          </div>
+
+          <div class="steps">
+            <div class="step reveal">
+              <div class="step-icon"><svg viewBox="0 0 24 24"><path class="stroke" d="M7 2v4M17 2v4M3 9h18M5 5h14a2 2 0 0 1 2 2v13H3V7a2 2 0 0 1 2-2Z"/></svg></div>
+              <div class="num">1</div>
+              <h3>Book your service</h3>
+              <p>Choose your service, date, time and location.</p>
+            </div>
+
+            <div class="step reveal">
+              <div class="step-icon"><svg viewBox="0 0 24 24"><path class="stroke" d="M3 13h13l4 4v3h-2M5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM3 17V8h10v5"/></svg></div>
+              <div class="num">2</div>
+              <h3>We come to you</h3>
+              <p>We arrive on time with everything needed.</p>
+            </div>
+
+            <div class="step reveal">
+              <div class="step-icon"><svg viewBox="0 0 24 24"><path class="stroke" d="M8 21h8M10 21l1-12h2l1 12M7 9h10M12 9V3M9 5l3-2 3 2"/></svg></div>
+              <div class="num">3</div>
+              <h3>We take care</h3>
+              <p>Experts clean your car using our low-water steam system.</p>
+            </div>
+
+            <div class="step reveal">
+              <div class="step-icon"><svg viewBox="0 0 24 24"><path class="stroke" d="M7 11v10H4V11h3ZM7 11l5-8 1 1a3 3 0 0 1 .5 3L13 9h6a2 2 0 0 1 2 2l-2 8a3 3 0 0 1-3 2H7"/></svg></div>
+              <div class="num">4</div>
+              <h3>Enjoy your day</h3>
+              <p>You carry on with work, relaxation or errands.</p>
+            </div>
+
+            <div class="step reveal">
+              <div class="step-icon"><svg viewBox="0 0 24 24"><path class="stroke" d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2ZM19 15l.9 2.6L22 18.5l-2.1.9L19 22l-.9-2.6-2.1-.9 2.1-.9L19 15Z"/></svg></div>
+              <div class="num">5</div>
+              <h3>Love the results</h3>
+              <p>A clean, fresh and protected car every single time.</p>
+            </div>
+          </div>
+
+          <div class="care-banner reveal">
+            <div class="care-banner-content">
+              <h2>Professional care, wherever your car is.</h2>
+              <p>
+                Our compact, self-contained system is designed to operate in suitable private parking
+                areas of flats, apartments, homes and workplaces.
+              </p>
+              <a class="btn" href="#contact">Book Your Service Today</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="section section-soft section-pad">
+        <div class="container">
+          <div class="section-title reveal">
+            <div class="kicker">Customer Reviews</div>
+            <h2>Real results. Real feedback.</h2>
+            <p>Premium service that customers trust again and again.</p>
+          </div>
+
+          <div class="review-summary reveal">
+            <div class="rating-left">
+              <div class="rating-number">5.0</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p>Based on 120+ reviews</p>
+            <div class="google"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+          </div>
+
+          <div class="review-grid">
+            <div class="review-card reveal">
+              <div class="mini-stars">★★★★★</div>
+              <p>“Brilliant service! My car looks brand new. So convenient having them come to me.”</p>
+              <strong>– James P.</strong>
+            </div>
+
+            <div class="review-card reveal">
+              <div class="mini-stars">★★★★★</div>
+              <p>“Perfect for apartment living. No hassle, no water, no mess. Highly recommend!”</p>
+              <strong>– Sophie T.</strong>
+            </div>
+
+            <div class="review-card reveal">
+              <div class="mini-stars">★★★★★</div>
+              <p>“Professional, friendly and the results are outstanding every single time.”</p>
+              <strong>– David R.</strong>
+            </div>
+
+            <div class="review-card reveal">
+              <div class="mini-stars">★★★★★</div>
+              <p>“I’ve saved so much time. The membership pays for itself so quickly.”</p>
+              <strong>– Mark L.</strong>
+            </div>
+
+            <div class="review-card reveal">
+              <div class="mini-stars">★★★★★</div>
+              <p>“Great attention to detail. My car has never looked better.”</p>
+              <strong>– Aisha K.</strong>
+            </div>
+
+            <div class="review-card reveal">
+              <div class="mini-stars">★★★★★</div>
+              <p>“Super easy booking and amazing service. 5 stars all day!”</p>
+              <strong>– Michael B.</strong>
+            </div>
+          </div>
+
+          <div class="review-dots" aria-label="Review highlights">
+            <button class="review-dot active" type="button" data-review="0" aria-label="Highlight review 1"></button>
+            <button class="review-dot" type="button" data-review="1" aria-label="Highlight review 2"></button>
+            <button class="review-dot" type="button" data-review="2" aria-label="Highlight review 3"></button>
+            <button class="review-dot" type="button" data-review="3" aria-label="Highlight review 4"></button>
+            <button class="review-dot" type="button" data-review="4" aria-label="Highlight review 5"></button>
+            <button class="review-dot" type="button" data-review="5" aria-label="Highlight review 6"></button>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="faq" class="section faq-section section-pad">
+        <div class="premium-ambient one" aria-hidden="true"></div>
+        <div class="premium-ambient two" aria-hidden="true"></div>
+
+        <div class="container faq-layout">
+          <div class="faq-intro reveal">
+            <div class="section-title left" style="margin-bottom: 0;">
+              <div class="kicker">Most Asked Questions</div>
+              <h2>Everything you need to know before booking</h2>
+              <p>
+                Clear answers about mobile steam car care, membership, access, flats and service areas.
+              </p>
+            </div>
+
+            <div class="faq-intro-card">
+              <h3>Premium care, made simple.</h3>
+              <p>
+                We keep the process easy: book your slot, park your car, and we bring the full self-contained setup.
+              </p>
+
+              <div class="faq-mini-slider" aria-label="FAQ highlights">
+                <div class="faq-mini-slide active">
+                  <strong>No water needed</strong>
+                  <span>We bring our own water and professional equipment.</span>
+                </div>
+                <div class="faq-mini-slide">
+                  <strong>Flat friendly</strong>
+                  <span>Suitable private parking areas can work with access permission.</span>
+                </div>
+                <div class="faq-mini-slide">
+                  <strong>Member value</strong>
+                  <span>Green Mist Club helps you save from your first wash.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-list reveal">
+            <div class="faq-item open">
+              <button class="faq-question" type="button">
+                <span>Do you need my water or electricity?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  No. Green Mist Studio brings the water, power, equipment and products needed for the service. The setup is designed to be self-contained and convenient.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Can you clean my car if I live in a flat?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes, if there is a suitable private parking area and the required access or permission. Our compact system is designed for homes, workplaces, flats and apartment developments.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>What is included in the Mini Valet?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Mini Valet includes exterior care plus interior vacuum, dashboard steam sanitisation, door panels cleaned, interior glass and a premium fragrance finish.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>How does the Green Mist Club membership work?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Green Mist Club costs £6.99/month. Members receive reduced service prices, priority booking, service history, before-and-after photos and exclusive offers.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Which areas do you cover?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We cover Exeter and surrounding areas including Topsham, Exmouth, Cullompton, Tiverton, Honiton and more nearby locations.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>How do I book a service?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Use the contact form, call us, or email us with your location, preferred service, car size and preferred time. We’ll confirm availability and the best service option.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-bottom-cta">
+              <div>
+                <h3>Still have a question?</h3>
+                <p>Send us a message and we’ll help you choose the right service.</p>
+              </div>
+              <a class="btn" href="#contact">Ask / Book Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-green section-pad">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-card reveal">
+              <h2>Get in touch</h2>
+              <p>
+                Have a question or want to know if we cover your area? Send us a message and we’ll help you book the right service.
+              </p>
+
+              <div class="contact-list">
+                <div class="contact-line">
+                  <svg viewBox="0 0 24 24"><path class="stroke" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.5 1.8L7.8 9.6a16 16 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.8-.5l2.8.5a2 2 0 0 1 1.7 2Z"/></svg>
+                  <div><h4>Call Us</h4><a href="tel:079XXXXXXXX">079XX XXXXXX</a></div>
+                </div>
+
+                <div class="contact-line">
+                  <svg viewBox="0 0 24 24"><path class="stroke" d="M4 4h16v16H4zM4 7l8 6 8-6"/></svg>
+                  <div><h4>Email Us</h4><a href="mailto:hello@greenmiststudio.co.uk">hello@greenmiststudio.co.uk</a></div>
+                </div>
+
+                <div class="contact-line">
+                  <svg viewBox="0 0 24 24"><path class="stroke" d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"/><path class="stroke" d="M12 10.5h.01"/></svg>
+                  <div><h4>Service Areas</h4><p>Exeter & surrounding areas</p></div>
+                </div>
+              </div>
+            </div>
+
+            <form class="form-card reveal" id="contactForm">
+              <div class="form-stack">
+                <div class="form-row">
+                  <input type="text" name="name" placeholder="Your Name" required>
+                  <input type="tel" name="phone" placeholder="Your Phone">
+                </div>
+
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <div class="form-row">
+                  <select name="service" aria-label="Service">
+                    <option value="">Choose Service</option>
+                    <option>Exterior Quick Refresh</option>
+                    <option>Mini Valet</option>
+                    <option>Green Mist Club</option>
+                  </select>
+
+                  <select name="size" aria-label="Vehicle size">
+                    <option value="">Vehicle Size</option>
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                  </select>
+                </div>
+
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button class="btn full" type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="areas" class="area-map reveal">
+            <div class="area-grid">
+              <div>
+                <h2>We cover Exeter<br>& surrounding areas</h2>
+                <ul class="areas">
+                  <li>Exeter</li>
+                  <li>Topsham</li>
+                  <li>Exmouth</li>
+                  <li>Cullompton</li>
+                  <li>Tiverton</li>
+                  <li>Honiton</li>
+                  <li>And More...</li>
+                </ul>
+              </div>
+              <div class="pin"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="premium-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <a href="#home" class="brand">
+              <span class="mark">GM</span>
+              <span>Green Mist<br>Studio</span>
+            </a>
+            <p>
+              Premium mobile steam car care for homes, workplaces, flats and private parking spaces.
+              Designed for modern living with low-water steam cleaning.
+            </p>
+            <span class="footer-pill">Low water · Mobile · Premium care</span>
+          </div>
+
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <a href="#home">Home</a>
+            <a href="#services">Services & Pricing</a>
+            <a href="#membership">Membership</a>
+            <a href="#how">How It Works</a>
+            <a href="#reviews">Customer Reviews</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#services">Exterior Quick Refresh</a>
+            <a href="#services">Mini Valet</a>
+            <a href="#membership">Green Mist Club</a>
+            <a href="#areas">Service Areas</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <p>Exeter & surrounding areas</p>
+            <a href="tel:079XXXXXXXX">079XX XXXXXX</a>
+            <a href="mailto:hello@greenmiststudio.co.uk">hello@greenmiststudio.co.uk</a>
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook">f</a>
+              <a href="#" aria-label="Instagram">◎</a>
+              <a href="#" aria-label="WhatsApp">☘</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© <span id="footerYear"></span> Green Mist Studio. All rights reserved.</p>
+          <div>
+            <a href="#contact">Book Now</a>
+            <a href="#membership">Join Club</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const loader = document.getElementById("pageLoader");
+    window.addEventListener("load", () => {
+      if (loader) setTimeout(() => loader.classList.add("hide"), 420);
+    });
+
+    const siteHeader = document.getElementById("siteHeader");
+    const scrollProgress = document.getElementById("scrollProgress");
+    const backTop = document.querySelector(".back-top");
+
+    function handleScrollUi() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+      if (scrollProgress) scrollProgress.style.width = progress + "%";
+      if (siteHeader) siteHeader.classList.toggle("scrolled", scrollTop > 20);
+      if (backTop) backTop.classList.toggle("visible", scrollTop > 650);
+    }
+
+    window.addEventListener("scroll", handleScrollUi);
+    handleScrollUi();
+
+    const mobileToggle = document.getElementById("mobileToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    mobileToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      document.body.classList.toggle("menu-open", navLinks.classList.contains("open"));
+      mobileToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        mobileToggle.textContent = "☰";
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+    const sections = Array.from(document.querySelectorAll("section[id]"));
+    const allNavLinks = Array.from(document.querySelectorAll(".nav-links a[href^='#']"));
+
+    function updateActiveNav() {
+      let current = "home";
+      sections.forEach((section) => {
+        const top = section.offsetTop - 160;
+        if (window.scrollY >= top) current = section.id;
+      });
+
+      allNavLinks.forEach((link) => {
+        const target = link.getAttribute("href").replace("#", "");
+        if (!link.classList.contains("btn")) {
+          link.classList.toggle("active", target === current);
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveNav);
+    updateActiveNav();
+
+    const tiltItems = document.querySelectorAll(".service-card, .review-card, .save-box, .hero-card");
+    tiltItems.forEach((card) => {
+      card.classList.add("premium-tilt");
+      card.addEventListener("mousemove", (event) => {
+        if (window.innerWidth < 900) return;
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rotateY = ((x / rect.width) - 0.5) * 4;
+        const rotateX = -((y / rect.height) - 0.5) * 4;
+        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+    });
+
+    const reviewCards = Array.from(document.querySelectorAll(".review-card"));
+    const reviewDots = Array.from(document.querySelectorAll(".review-dot"));
+    let currentReview = 0;
+
+    function setFeaturedReview(index) {
+      currentReview = index;
+      reviewCards.forEach((card, cardIndex) => card.classList.toggle("featured", cardIndex === index));
+      reviewDots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === index));
+    }
+
+    if (reviewCards.length && reviewDots.length) {
+      setFeaturedReview(0);
+      reviewDots.forEach((dot) => {
+        dot.addEventListener("click", () => setFeaturedReview(Number(dot.dataset.review)));
+      });
+
+      setInterval(() => {
+        setFeaturedReview((currentReview + 1) % reviewCards.length);
+      }, 3400);
+    }
+
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-item").forEach((item) => {
+      const answer = item.querySelector(".faq-answer");
+      if (item.classList.contains("open") && answer) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const answer = item.querySelector(".faq-answer");
+        const isOpen = item.classList.contains("open");
+
+        document.querySelectorAll(".faq-item").forEach((faq) => {
+          faq.classList.remove("open");
+          const faqAnswer = faq.querySelector(".faq-answer");
+          if (faqAnswer) faqAnswer.style.maxHeight = "0px";
+        });
+
+        if (!isOpen) {
+          item.classList.add("open");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+
+    // FAQ premium mini slider
+    const faqSlides = Array.from(document.querySelectorAll(".faq-mini-slide"));
+    let faqSlideIndex = 0;
+    if (faqSlides.length) {
+      setInterval(() => {
+        faqSlides[faqSlideIndex].classList.remove("active");
+        faqSlideIndex = (faqSlideIndex + 1) % faqSlides.length;
+        faqSlides[faqSlideIndex].classList.add("active");
+      }, 2800);
+    }
+
+    // Small stagger for premium reveal flow
+    document.querySelectorAll(".service-card, .benefit-card, .review-card, .faq-item").forEach((item, index) => {
+      item.style.transitionDelay = Math.min(index * 35, 180) + "ms";
+    });
+
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      alert("Thanks! Your message has been received.");
+      form.reset();
+    });
+
+    const footerYear = document.getElementById("footerYear");
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
